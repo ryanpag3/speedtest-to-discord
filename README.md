@@ -6,9 +6,9 @@ Run this locally on your network to get discord notifications of your internet s
 
 ### Requirements
 
-**Docker**: https://docs.docker.com/get-docker/
+**Docker**: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 
-**Docker Compose**: https://docs.docker.com/compose/install/
+**Docker Compose**: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
 ### Steps
 
