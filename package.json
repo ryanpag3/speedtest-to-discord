@@ -6,9 +6,10 @@
   "author": "Ryan Page <ryanapage@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "watch" : "tsnd src/index.ts"
+    "watch": "tsnd src/index.ts"
   },
   "dependencies": {
+    "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "node-cron": "^3.0.0",
     "speedtest-net": "^2.2.0",
