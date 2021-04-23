@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  run-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: User node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: install dependencies and run tests
+        run: |
+          yarn install
+      - name: build and publish docker container
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+          docker build . -t ryanpage/speedtest-to-discord:${{ github.run_number }} -t ryanpage/speedtest-to-discord:latest
+          docker push ryanpage/speedtest-to-discord:${{ github.run_number }}
+          docker push ryanpage/speedtest-to-discord:latest
