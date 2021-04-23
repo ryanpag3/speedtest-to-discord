@@ -6,3 +6,4 @@ services:
         image: ryanpage/speedtest-to-discord
         env_file: ./.env
         container_name: speedtest-to-discord
+        restart: unless-stopped
