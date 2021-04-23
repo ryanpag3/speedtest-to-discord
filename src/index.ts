@@ -21,7 +21,7 @@ const task = cron.schedule(process.env.INTERVAL, async () => {
             delete options.acceptLicense;
             throw new Error(`Please review speedtest license and provide ACCEPT_SPEEDTEST_LICENSE=true when completed.\n\nhttps://www.speedtest.net/about/eula\nhttps://www.speedtest.net/about/terms\nhttps://www.speedtest.net/about/privacy`)
         }
-        
+
         const res = await speedTest(options);
         console.log(res);
 
@@ -37,6 +37,7 @@ const task = cron.schedule(process.env.INTERVAL, async () => {
         embed.addField('Server IP', res.server.ip);
         embed.addField('Server Port', res.server.port);
         embed.addField('Link', res.result.url);
+        embed.setFooter(`The best speed tests are ones that are running during low-impact times of the day. Be sure to schedule accordingly!`)
         // @ts-ignore
         discordClient.channels.cache.get(process.env.DISCORD_CHANNEL_ID).send(embed);
     } catch (e) {
